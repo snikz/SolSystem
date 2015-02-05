@@ -37,6 +37,10 @@ namespace WindowsFormsApplication1
             this.totalDays = totalDays;
             aTimer.Enabled = true;
         }
+        public void resume()
+        {
+            aTimer.Enabled = true;
+        }
         public void stop()
         {
             aTimer.Enabled = false;

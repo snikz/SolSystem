@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
         Label Label1;
         String selectedObject;
         bool removeLabel = false;
+        bool pause = false;
         public Form1(ArrayList a)
         {
             this.a = a;
@@ -127,7 +128,7 @@ namespace WindowsFormsApplication1
                             {
                                 Controls.Add(Label1);
                                 labelList.Add(Label1);
-                                Debug.Print("name not shwon on center");
+                                Debug.Print(t1.getName());
                             }
                             catch (Win32Exception e1)
                             {
@@ -248,8 +249,6 @@ namespace WindowsFormsApplication1
             sun.calculateXY(countedDays, 0, 0);
             if (countedDays < days)
             {
-                Debug.Print(s1.ToString());
-                Debug.Print(days.ToString());
                 this.countedDays = s1;
             }
             else
@@ -395,6 +394,24 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            removeLabel = true;
+            removeLabels();
+            if (pause)
+            {
+                moving = true;
+                pause = false;
+                timerEvent.resume();
+            }
+            else if (!pause)
+            {
+                moving = false;
+                pause = true;
+                timerEvent.stop();
             }
         }
     }
